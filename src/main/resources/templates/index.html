@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>CRUD de personas</title>
+
+    <!-- Css boostrap -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body>
+
+<div class="container py-4">
+    <div th:switch="${list}">
+
+        <a href="/save/0" class="btn btn-block btn-primary">
+            Crear
+        </a>
+
+        <hr>
+
+        <h1 th:if="${list.isEmpty()}" class="text-center">
+            No hay personas registradas en el sistema
+        </h1>
+        <div th:if="${!list.isEmpty()}">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Lista de usuarios
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Apellido</th>
+                                    <th scope="col">Dirección</th>
+                                    <th scope="col">Teléfono</th>
+                                    <th scope="col">Opciones</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="persona : ${list}">
+                                    <th scope="row" th:text="${persona.id}"></th>
+                                    <td th:text="${persona.nombre}"></td>
+                                    <td th:text="${persona.apelllido}"></td>
+                                    <td th:text="${persona.direccion}"></td>
+                                    <td th:text="${persona.telefono}"></td>
+                                    <td>
+                                        <a th:href="@{/save/{id}(id=${persona.getId()})}" class="btn btn-warning">Editar</a>
+                                        <a th:href="@{/delete/{id}(id=${persona.getId()})}" class="btn btn-danger">Eliminar</a>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

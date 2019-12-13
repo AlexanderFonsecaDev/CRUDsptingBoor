@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Crear una nueva persona</title>
+
+    <!-- Css boostrap -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Registre el nuevo usuario</h2>
+        <p class="lead">Esta es una prueba de aprendizaje de Spring boot , un framework de java que por alguna extraña
+            razón todos usan</p>
+        <a href="">
+
+        </a>
+    </div>
+
+    <div class="col-md-12">
+        <form class="needs-validation" novalidate th:action="@{/save}" th:object="${persona}" method="post">
+            <div class="row">
+
+                <input type="hidden" name="id" id="id" th:field="*{id}">
+
+                <div class="col-md-6 mb-3">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}"
+                           placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                        El nombre de usuario es necesario
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido" th:field="*{apelllido}"
+                           placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                        El apellido es necesario
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label for="direccion">Dirección</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion" th:field="*{direccion}"
+                           placeholder="" required>
+                    <div class="invalid-feedback">
+                        en algun lado debe vivir
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="telefono">Teléfono</label>
+                    <input type="text" class="form-control" id="telefono" name="telefono" th:field="*{telefono}"
+                           placeholder="+57 5898497" required>
+                    <div class="invalid-feedback">
+                        vamos para el 2020 y no tiene telefono ?
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Registrar</button>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+</html>
